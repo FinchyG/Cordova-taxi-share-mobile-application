@@ -1,0 +1,78 @@
+<html>
+  <head>
+    <!--
+	/***********
+	 * OU TM352 Block 3, TMA03: index.html
+	 *
+	 * To function correctly this file must be placed in a Cordova project and the appopriate plugins installed.
+	 * You need to complete the code which is commented with TODO.
+	 *
+	 * Released by Chris Thomson / Stephen Rice: Dec 2020
+	 * Modified and submitted by (your name here)
+	 ************/
+ --->
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-ui.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js" type="text/javascript" charset="utf-8"></script>
+    <title>Taxi Sharing</title>
+  </head>
+  <body>
+    <div>
+      <!--- TODO: add text and form entry methods to capture required data -->
+	  
+	  <h4>Taxi Share</h4>
+	  
+	  <!-- allow new user to register their OUCU-->
+		
+	  <input type="text" id="newOUCU" value="" placeholder="New user register OUCU" />
+          <input type="button" value="Register" onclick="controller.registerUser()" />
+		
+	  <!-- take details of a new taxi share offer or request -->
+          <p><b>Make offer / request</b></p>
+          
+          <input type="text" id="OUCU" placeholder="Enter OUCU"><br>
+          
+	  <label for="startTime">Date and time:</label>
+	  <input type="datetime-local" id="startTime" name="startTime"><br>
+		
+	  <select name="waitingTime" id="waitingTime">
+		<option value="" disabled selected>Waiting time for offer</option>
+		<option value="1">1 hour</option>
+		<option value="2">2 hours</option>
+		<option value="3">3 hours</option>
+		<option value="4">4 hours</option> 
+	  </select><br>
+	
+	  <select name="pickupAddress" id="pickupAddress">		  
+	    <option value="" disabled selected>Picking up from</option>
+	    <option value="Milton Keynes Central station">Milton Keynes Central station</option>
+	    <option value="Open University, Milton Keynes">Open University, Milton Keynes</option>
+	  </select><br>
+          <input type="button" value="Offer taxi share" onclick="controller.offerTaxi()" /><br>
+      <input type="button" value="Request taxi share" onclick="controller.requestTaxi()" />
+		
+    </div>
+    <div>
+      <!--- TODO: add buttons to allow the various functional requirements to be enacted -->
+      <input type="button" value="Cancel all offers / requests" onclick="controller.cancel()"><br><br>
+      <input type="button" value="Centre map on current location" onclick="controller.centreMap()"><br>
+      <input type="button" value="Display matching offers / requests" onclick="controller.updateMap()">
+      <!--button for accessing camera API to take photos with device camera -->
+      <input type="button" value="Take photo" onclick="controller.takePhoto()">
+    </div>
+    <!--- TODO: add a placeholder for the HERE Map -->
+    <div id="mapContainer"></div>
+
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/helpers.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+  </body>
+</html>
